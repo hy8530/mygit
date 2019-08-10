@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.SetMealDao">
+
+    <!--新增套餐-->
+    <insert id="add" parameterType="setmeal" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO t_setmeal (name,code,helpCode,sex,age,price,remark,attention,img)
+        VALUES
+        (#{name},#{code},#{helpCode},#{sex},#{age},#{price},#{remark},#{attention},#{img})
+    </insert>
+    
+    <!--新增中间表记录-->
+    <insert id="setSetmealAndCheckGroup" parameterType="map">
+        INSERT INTO t_setmeal_checkgroup (setmeal_id,checkgroup_id)
+        VALUES
+        (#{setmealId},#{checkgroupId})
+    </insert>
+
+
+    <!--有条件的分页查询-->
+    <select id="findByCondition" parameterType="string" resultType="setmeal">
+        SELECT * FROM  t_setmeal
+        <if test="value != null and value.length > 0">
+            WHERE code = #{value} OR name = #{value} OR helpCode = #{value}
+        </if>
+    </select>
+
+    <!--查询套餐列表数据-->
+    <select id="getSetmeal" resultType="setmeal">
+        SELECT * FROM t_setmeal
+    </select>
+
+    <!--根据id查询套餐-->
+    <resultMap id="baseMap" type="setmeal">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="price" property="price"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+        <result column="img" property="img"/>
+    </resultMap>
+    <resultMap id="groupMap" type="setmeal" extends="baseMap">
+        <collection property="checkGroups" ofType="checkGroup" column="id" select="com.itheima.dao.CheckGroupDao.findSetGroupById">
+        </collection>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="groupMap">
+        SELECT * FROM t_setmeal WHERE id = #{id}
+    </select>
+
+    <!--查找出预约的套餐名和数量-->
+    <select id="findSetmealCount" resultType="map">
+        SELECT s.name, COUNT(o.id) value FROM t_order o, t_setmeal s WHERE o.setmeal_id = s.id GROUP BY s.id
+    </select>
+
+    <!--获取热门套餐-->
+    <select id="findHotmeal" resultType="map">
+        SELECT s.name, COUNT(o.id) setmeal_count,(COUNT(o.id)/(SELECT COUNT(*) FROM t_order)) proportion,s.`remark` FROM t_order o, t_setmeal s
+WHERE o.setmeal_id = s.id GROUP BY s.id ORDER BY setmeal_count DESC LIMIT 0,4
+    </select>
+</mapper>

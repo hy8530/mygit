@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                            http://code.alibabatech.com/schema/dubbo
+                            http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/security
+                            http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <context:component-scan base-package="com.itheima"></context:component-scan>
+    <!--配置需要权限才能访问的资源-->
+    <!--匿名访问-->
+    <security:http pattern="/login.html" security="none"/>
+    <!--
+        auto-config: 是否需要框架自动生成，加载登录页面
+        use-expressions: 是否使用表达式
+    -->
+    <security:http auto-config="true" use-expressions="true">
+        <!--配置拦截路径 pattern:拦截规则，可以是请求或页面，access:表达式或角色-->
+        <security:intercept-url pattern="/a.html" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/b.html" access="hasAuthority('add')"></security:intercept-url>
+        <security:intercept-url pattern="/c.html" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
+        <security:intercept-url pattern="/d.html" access="hasRole('ADMIN')"></security:intercept-url>
+        <!--<security:intercept-url pattern="/**" access="ROLE_ADMIN"></security:intercept-url>-->
+        <!--配置自定义登录-->
+        <!--login-page：登录页面，username-parameter：指定用户名的name，password-parameter：指定密码的name，
+            login-processing-url：指定登陆的action，authentication-failure-url:指定认证失败跳转的页面
+            authentication-success-forward-url:指定跳转成功的页面-->
+        <security:form-login login-page="/login.html" username-parameter="username" password-parameter="password"
+                             login-processing-url="/login.do" authentication-failure-url="/login.html"
+                             authentication-success-forward-url="/index.html"></security:form-login>
+        <!--关闭CsrfFilter过滤器-->
+        <security:csrf disabled="true"></security:csrf>
+
+        <!--配置退出登录-->
+        <!--logout-url:指定退出的action，logout-success-url：退出成功跳转页面，invalidate-session：退出销毁session-->
+        <security:logout logout-url="/logout.do" logout-success-url="/login.html" invalidate-session="true"></security:logout>
+    </security:http>
+
+
+
+    <!--配置认证管理器-->
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="myUserService">
+            <!--<security:user-service>
+                &lt;!&ndash;name：用户名，authoritirs：认证成功后赋予的权限，password：密码，{noop}不加密&ndash;&gt;
+                &lt;!&ndash;<security:user name="admin" authorities="ROLE_ADMIN" password="{noop}admin"></security:user>&ndash;&gt;
+            </security:user-service>-->
+            <security:password-encoder ref="bCryptPasswordEncoder"></security:password-encoder>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="myUserService" class="com.itheima.security.MySecurityUserService"></bean>
+    <!--注册密码加密对象-->
+    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+
+    <!--开启注解权限支持-->
+    <security:global-method-security pre-post-annotations="enabled"/>
+</beans>
