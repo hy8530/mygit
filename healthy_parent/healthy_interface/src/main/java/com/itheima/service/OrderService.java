@@ -25,5 +25,4 @@ public interface OrderService {
      * @return
      */
     Integer findCountByStemealId(Integer id);
-
 }

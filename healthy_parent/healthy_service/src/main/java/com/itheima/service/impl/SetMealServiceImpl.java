@@ -1,7 +1,6 @@
 package com.itheima.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.constant.RedisConstant;
@@ -49,7 +48,6 @@ public class SetMealServiceImpl implements SetMealService{
     public void add(List<Integer> checkgroupIds, Setmeal setmeal) {
         // 先新增setmeal记录，返回自增主键
         setMealDao.add(setmeal);
-        jedisPool.getResource().srem(RedisConstant.setmeal_List);
         if(checkgroupIds != null && checkgroupIds.size() > 0){
             // 再向中间表添加记录
             this.setSetmealAndCheckGroup(setmeal.getId(),checkgroupIds);
@@ -64,18 +62,7 @@ public class SetMealServiceImpl implements SetMealService{
      */
     @Override
     public List<Setmeal> getSetmeal() {
-
-        List<Setmeal> list=null;
-        String srtmealList = jedisPool.getResource().get(RedisConstant.setmeal_List);
-        list= (List<Setmeal>) JSON.parse(srtmealList);
-        if (list==null){
-            list = setMealDao.getSetmeal();
-            String listjson = (String) JSON.toJSONString(list);
-            jedisPool.getResource().set(RedisConstant.setmeal_List,listjson);
-        }
-
-
-        return list;
+        return setMealDao.getSetmeal();
     }
 
     /**
@@ -85,20 +72,7 @@ public class SetMealServiceImpl implements SetMealService{
      */
     @Override
     public Setmeal findById(Integer id) {
-        Setmeal setmeal=null;
-        String s = jedisPool.getResource().get(RedisConstant.setmeal_List);
-        List<Setmeal> list = (List<Setmeal>) JSON.parseArray(s,Setmeal.class);
-        if (list!=null){
-            for (Setmeal setmeal1 : list) {
-                if (setmeal1.getId().equals(id)){
-                    setmeal=setmeal1;
-                    break;
-                }
-            }
-        }else {
-           setmeal= setMealDao.findById(id);
-        }
-        return setmeal;
+        return setMealDao.findById(id);
     }
 
     /**
