@@ -28,6 +28,8 @@ public class MessageConstant {
     public static final String GET_ORDERSETTING_FAIL = "获取预约设置数据失败";
     public static final String ORDERSETTING_SUCCESS = "预约设置成功";
     public static final String ORDERSETTING_FAIL = "预约设置失败";
+    public static final String QUERY_MEMBER_SUCCESS = "查询会员成功";
+    public static final String QUERY_MEMBER_FAIL = "查询会员失败";
     public static final String ADD_MEMBER_FAIL = "新增会员失败";
     public static final String ADD_MEMBER_SUCCESS = "新增会员成功";
     public static final String DELETE_MEMBER_FAIL = "删除会员失败";

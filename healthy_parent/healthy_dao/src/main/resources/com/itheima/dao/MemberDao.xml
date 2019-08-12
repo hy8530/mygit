@@ -49,4 +49,61 @@
     <select id="findMemberTotalCount" resultType="int">
         select count(id) from t_member
     </select>
+
+    <!--有条件的分页查询-->
+    <select id="findByCondition" parameterType="string" resultType="member">
+        SELECT * FROM t_member
+        <if test="value != null and value.length > 0">
+            WHERE code = #{value} OR name = #{value}
+        </if>
+    </select>
+    <!--根据id查询会员-->
+    <select id="findItemById" resultType="member" parameterType="int">
+        select * from t_member where id =#{id}
+    </select>
+
+    <!--根据id删除检查项-->
+    <delete id="deleteMember" parameterType="integer">
+        DELETE FROM t_member WHERE id = #{id}
+    </delete>
+    <!--根据id更新会员信息-->
+    <update id="update" parameterType="member">
+        UPDATE t_member
+        <set>
+            <if test="fileNumber != null">
+                fileNumber = #{fileNumber},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="idCard != null">
+                idCard = #{idCard},
+            </if>
+            <if test="phoneNumber != null">
+                phoneNumber = #{phoneNumber},
+            </if>
+            <if test="regTime != null">
+                regTime = #{regTime},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
 </mapper>
