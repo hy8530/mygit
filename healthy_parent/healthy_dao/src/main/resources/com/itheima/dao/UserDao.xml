@@ -31,4 +31,5 @@
     <delete id="deleteUserById" parameterType="int" >
       DELETE from t_user WHERE  id=#{id}
     </delete>
+
 </mapper>

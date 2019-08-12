@@ -15,6 +15,7 @@ import com.itheima.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Service
@@ -95,4 +96,6 @@ public class UserServiceImpl implements UserService{
         userDao.deleteUserAndRole(userId);
         userDao.deleteUserById(userId);
     }
+
+
 }

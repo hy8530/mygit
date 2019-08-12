@@ -64,4 +64,14 @@ public class MessageConstant {
     public static final String UPLOAD_FAIL = "上传失败";
     public static final String ORDER_FAIL = "预约失败";
     public static final String LOGIN_FAIL = "登录失败";
+    public static final String QUERY_ROLE_SUCCESS = "查询角色成功";
+    public static final String QUERY_ROLE_FAIL = "查询角色失败";
+    public static final String QUERY_USER_SUCCESS ="查询用户成功" ;
+    public static final String QUERY_USER_FAIL ="查询用户失败" ;
+    public static final String ADD_USER_SUCCESS = "添加用户成功";
+    public static final String ADD_USER_FAIL = "添加用户失败";
+    public static final String ADD_ROLE_SUCCESS ="添加角色成功" ;
+    public static final String ADD_ROLE_FAIL = "添加角色失败";
+    public static final String UPDATE_ROLE_SUCCESS = "修改角色成功";
+    public static final String UPDATE_ROLE_FAIL ="修改角色失败" ;
 }

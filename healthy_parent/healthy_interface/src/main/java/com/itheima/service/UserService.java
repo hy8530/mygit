@@ -5,6 +5,7 @@ import com.itheima.entity.QueryPageBean;
 import com.itheima.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     /**
@@ -26,4 +27,6 @@ public interface UserService {
     void findUserName(String username);
 
     void delete(Integer userId);
+
+
 }

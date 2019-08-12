@@ -27,10 +27,10 @@ public class RoleController {
             PageResult pageResult = roleService.findRoleAll(queryPageBean);
             result.setFlag(true);
             result.setData(pageResult);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_ROLE_FAIL);
         }
         return result;
     }
@@ -41,10 +41,10 @@ public class RoleController {
             List<Permission> pageResult = roleService.findPermissionAll();
             result.setFlag(true);
             result.setData(pageResult);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_ROLE_FAIL);
         }
         return result;
     }
@@ -54,10 +54,10 @@ public class RoleController {
         try {
             roleService.addRole(menuIds,permissionsIds,role);
             result.setFlag(true);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.ADD_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.ADD_ROLE_FAIL);
         }
         return result;
     }
@@ -68,10 +68,10 @@ public class RoleController {
            Role role=  roleService.findoneRole(roleId);
             result.setFlag(true);
             result.setData(role);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_ROLE_FAIL);
         }
         return result;
     }
@@ -82,10 +82,10 @@ public class RoleController {
            Map map=  roleService.roleAndPermissionByRoleId(roleId);
             result.setFlag(true);
             result.setData(map);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_ROLE_FAIL);
         }
         return result;
     }
@@ -96,10 +96,10 @@ public class RoleController {
             roleService.edit(menuIds,permissionsIds,role);
             result.setFlag(true);
 
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.UPDATE_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.UPDATE_ROLE_FAIL);
         }
         return result;
     }
@@ -109,10 +109,10 @@ public class RoleController {
         try {
            roleService.delete(roleId);
             result.setFlag(true);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_ROLE_FAIL);
         }
         return result;
     }
@@ -123,10 +123,10 @@ public class RoleController {
           List<Role> list = roleService.findRolesAll();
             result.setFlag(true);
             result.setData(list);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_ROLE_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_ROLE_FAIL);
         }
         return result;
     }

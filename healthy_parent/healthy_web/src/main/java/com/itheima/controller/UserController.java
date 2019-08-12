@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -42,10 +40,10 @@ public class UserController {
             PageResult pageResult = userService.findUserAll(queryPageBean);
             result.setFlag(true);
             result.setData(pageResult);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.QUERY_USER_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.QUERY_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.QUERY_USER_FAIL);
         }
         return result;
     }
@@ -60,10 +58,10 @@ public class UserController {
             userService.addUser(user,rolesIds);
             result.setFlag(true);
 
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.ADD_USER_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.ADD_USER_FAIL);
         }
         return result;
     }
@@ -74,10 +72,10 @@ public class UserController {
             com.itheima.pojo.User user = userService.findoneUser(userId);
             result.setFlag(true);
             result.setData(user);
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.ADD_USER_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.ADD_USER_FAIL);
         }
         return result;
     }
@@ -88,10 +86,10 @@ public class UserController {
             List<Integer> list= userService.userAndRoleByUserId(userId);
             result.setFlag(true);
             result.setData(list);
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.ADD_USER_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.ADD_USER_FAIL);
         }
         return result;
     }
@@ -102,10 +100,10 @@ public class UserController {
             userService.edit(user,rolesIds);
             result.setFlag(true);
 
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_SUCCESS);
+            result.setMessage(MessageConstant.ADD_USER_SUCCESS);
         } catch (Exception e) {
             result.setFlag(false);
-            result.setMessage(MessageConstant.ADD_CHECKGROUP_FAIL);
+            result.setMessage(MessageConstant.ADD_USER_FAIL);
         }
         return result;
     }
@@ -137,4 +135,5 @@ public class UserController {
         }
         return result;
     }
+
 }

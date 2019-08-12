@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.itheima.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Map;
+
 public interface UserDao {
     /**
      * 根据用户名查找用户
@@ -26,4 +28,5 @@ public interface UserDao {
     void deleteUserById(Integer userId);
 
     User findUserByUserName(String username);
+
 }
