@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-5.0.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/zookeeper-3.4.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/mybatis-3.4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/jsqlparser-0.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/gson-2.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/spring-security-config-5.0.5.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/spring-core-5.0.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/healthy_job/target/healthy_job-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-5.0.2.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
