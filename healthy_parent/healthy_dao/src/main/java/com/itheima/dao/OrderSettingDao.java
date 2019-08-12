@@ -45,10 +45,4 @@ public interface OrderSettingDao {
      * @param orderSetting
      */
     void editReservationsByOrderDate(OrderSetting orderSetting);
-
-    /**
-     * 清理过时预约数据
-     * @param firstDay4ThisMonth
-     */
-    void clearOldOrdersetting(String firstDay4ThisMonth);
 }

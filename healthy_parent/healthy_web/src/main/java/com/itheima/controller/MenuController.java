@@ -98,6 +98,7 @@ public class MenuController {
         Result result = new Result();
 
         try {
+            //通过安全容器获得登录对象
           Menu menu =  menuService.findonemenu(menuid);
             result.setFlag(true);
             result.setData(menu);
