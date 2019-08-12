@@ -64,4 +64,6 @@ public class MessageConstant {
     public static final String UPLOAD_FAIL = "上传失败";
     public static final String ORDER_FAIL = "预约失败";
     public static final String LOGIN_FAIL = "登录失败";
+    public static final String NOT_SET_SETMEAL = "未选择套餐";
+    public static final String ONLY_SELECT_ONESETMEAL_ONCE = "一次只能选择一个套餐";
 }
