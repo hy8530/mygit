@@ -10,10 +10,12 @@ import com.itheima.dao.UserDao;
 import com.itheima.entity.PageResult;
 import com.itheima.entity.QueryPageBean;
 import com.itheima.pojo.Role;
+import com.itheima.pojo.User;
 import com.itheima.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Service

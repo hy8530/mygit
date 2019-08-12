@@ -7,6 +7,7 @@ import com.itheima.dao.MenuDao;
 import com.itheima.entity.PageResult;
 import com.itheima.entity.QueryPageBean;
 import com.itheima.pojo.Menu;
+import com.itheima.pojo.User;
 
 import com.itheima.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
