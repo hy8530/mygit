@@ -1,10 +1,7 @@
 package com.itheima.dao;
 
 import com.github.pagehelper.Page;
-import com.itheima.pojo.User;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.Map;
 
 public interface UserDao {
     /**

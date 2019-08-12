@@ -1,6 +1,5 @@
 package com.itheima.security;
 
-import com.itheima.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
